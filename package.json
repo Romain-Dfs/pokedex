@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "scss": "sass -w --update srcWeb/scss:pokedex/myapp/static/dist/css",
-    "start":"run-p scss"
-},
+    "start": "run-p scss"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Romain-Dfs/pokedex.git"
