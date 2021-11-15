@@ -52,8 +52,9 @@ function opencloseUpdatePokemonBox(id, idTeam) {
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhttp.onload = function () {
+            debugger;
             if (xhttp.status === 200) {
-                location.reload();
+                window.location.href = '/teams/' + idTeam;
             }
             if (xhttp.status === 400) {
                 alert('the request was not successful')
@@ -70,6 +71,7 @@ function opencloseUpdatePokemonBox(id, idTeam) {
  * @param idTeam = id de la team en cour
  */
 function addPokemon(idTeam) {
+    console.log(idTeam)
     /**
      * fait une requête ajax qui appele la route updateTeam
      * reload au succes
@@ -81,8 +83,9 @@ function addPokemon(idTeam) {
     xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhttp.onload = function () {
+        debugger;
         if (xhttp.status === 200) {
-            location.reload();
+            window.location.href = '/teams/' + idTeam;
         }
         if (xhttp.status === 400) {
             alert('the request was not successful')
