@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+
+    <!-- chargement des fichier css et js -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dist/css/styles.css' %} ">
+</head>
+<body>
+<!-- affichage d'une erreur -->
+<div class="error">
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ pokemon }}.png" alt="error pokedex">
+    <h1>ERROR in application</h1>
+    <p>{{ ERROR }}</p>
+</div>
+</body>
+</html>

@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Teams
 
-# Register your models here.
+# permet de voir la list des teams
+admin.site.register(Teams)

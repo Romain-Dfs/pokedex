@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokedex {{ name }}</title>
+
+    <!-- chargement des fichier css et js -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dist/css/styles.css' %} ">
+    <script type="text/javascript" src="{% static 'dist/js/index.js' %}"></script>
+</head>
+<body>
+<!--container header du pokemon-->
+<div class="section section-pokemon background--type-{% with types|first as first_type %}{{ first_type.type.name }}{% endwith %}">
+
+    <!-- header -->
+    <div class="header">
+        <a href="/" class="header-back"><span class="arrow-back"></span></a>
+        <h1 class="title"> {{ name|title }}</h1>
+        <span class="search" onclick="opencloseSearchBox()"></span>
+    </div>
+
+    <!-- affiche les types du pokemons -->
+    <div class="pokemon-presenter-type">
+        {% for type in types %}
+        <div class="type type--pokemon-presenter pokemon-presenter-type-item">
+            {{ type.type.name|title }}
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- affiche les photos du pokémons -->
+    <div class="pokemon-presenter-img">
+        <img src="{{ sprites.front_default }}" alt="{{ name }} picture">
+        <img src="{{ sprites.back_default }}" alt="{{ name }} picture">
+    </div>
+</div>
+
+<!-- container des informations du pokemon -->
+<div class="section-data">
+    <div class="information">
+        <div class="subtitle">
+            About
+        </div>
+        <div>
+            <div>
+                <div class="text grid-section">
+                    <div>
+                        Height
+                    </div>
+                    <div>
+                        {{ height }}0 cm
+                    </div>
+                </div>
+                <div class="text grid-section">
+                    <div>
+                        Weight
+                    </div>
+                    <div>
+                        {{ weight }} kg
+                    </div>
+                </div>
+                <div class="text grid-section">
+                    <div>
+                        Abilities
+                    </div>
+                    <div>
+                        <!-- boucle pour afficher ses abilités en placant la virgule partout sauf au dernier -->
+                        {% for ability in abilities %}
+                        {% if forloop.last %}
+                        {{ ability.ability.name |title }}
+                        {% else %}
+                        {{ ability.ability.name |title }},
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="text grid-section">
+                    <div>
+                        EggGroups
+                    </div>
+                    <div>
+                        {{ egg_groups }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- affiche avec la description des abilités -->
+    <div class="information">
+        <div class="subtitle">
+            Abilities
+        </div>
+        <div>
+            <div>
+                {% for dataAbility in dataAbilities %}
+                <div class="text">
+                    <div class="text-up">
+                        {{ dataAbility.name|title }}
+                    </div>
+                    <div>
+                        {{ dataAbility.effect }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- box en position absolue pour rechercher les pokemons -->
+<div class="searchBox searchBox--hidden" id="searchBox">
+    <div class="searchBox__section">
+        <select class="searchBox__select" onchange="selectSearch()" id="searchBoxSelect">
+            {% for pokemon in searchPokemon %}
+            <option value="{{ pokemon.id }}" {% if pokemon.name== name %} selected {% endif %}>{{ pokemon.name }}
+            </option>
+            {% endfor %}
+        </select>
+        <span class="searchBox__label">Pokemon :</span>
+    </div>
+    <span class="searchBox__close" onclick="opencloseSearchBox()"></span>
+</div>
+</body>
+</html>

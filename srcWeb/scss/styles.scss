@@ -1,0 +1,16 @@
+@use 'base/base';
+
+@use "utils/police";
+
+@use "modules/card";
+@use "modules/arrow";
+@use "modules/section";
+@use "modules/backgournd";
+@use "modules/information";
+@use "modules/search";
+
+@use "layouts/grid";
+@use "layouts/header";
+@use "layouts/pokemon-presenter";
+@use "layouts/error";
+@use "layouts/searchBox";

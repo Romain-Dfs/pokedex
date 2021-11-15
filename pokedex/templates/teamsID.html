@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokedex Teams</title>
+
+    <!-- chargement des fichier css et js -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dist/css/styles.css' %} ">
+    <script type="text/javascript" src="{% static 'dist/js/index.js' %}"></script>
+</head>
+<body>
+<!-- header -->
+<div class="header header-back">
+    <a href="/teams" class="header-back"><span class="arrow-back"></span></a>
+    <div style="display: flex">
+        <span class="searchBox__close" style="transform: scale(1.5)" onclick="deleteTeam({{ idteam }})"></span>
+        <input class="title" value="{{ name|title }}" id="nameTeam" onchange="updateName({{ idteam }})">
+    </div>
+    <span class="search" onclick="opencloseSearchBox()"></span>
+</div>
+
+<!-- container des pokemons de la team -->
+<div class="grid__container">
+
+    <!-- card du pokemon 1 -->
+    <div class="card-teamId">
+        <div class="card-teamId--container background--type-{% with pokemon1.types|first as first_type %}{{ first_type.type.name }}{% endwith %}">
+            <div class="card-teamId__text name grid-section">
+                <span class="searchBox__{% if pokemon1.id != 0 %}close{% else %}add{% endif %}" style="margin: 0"
+                      onclick="opencloseUpdatePokemonBox({{ pokemon1.id }},{{ idteam }},{{ csrf_token }})"></span>
+                {{ pokemon1.name|title }}
+            </div>
+            <div class="card-teamId__type--container">
+                {% for type in pokemon1.types %}
+                <div class="card-teamId__text type card-teamId__type">
+                    {{ type.type.name }}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="card-teamId--img">
+                <img src="{{ pokemon1.sprites.front_default }}" alt="{{ pokemon1.name }}">
+            </div>
+        </div>
+        <div class="card-teamId__about">
+            <div class="subtitle">About</div>
+            <div class="text grid-section">
+                <div>
+                    Height
+                </div>
+                <div>
+                    {{ pokemon1.height }}0 cm
+                </div>
+            </div>
+            <div class="text grid-section   ">
+                <div>
+                    Weight
+                </div>
+                <div>
+                    {{ pokemon1.weight }} kg
+                </div>
+            </div>
+            <div class="text grid-section">
+                <div>
+                    Abilities
+                </div>
+                <div>
+                    {% for ability in pokemon1.abilities %}
+                    {% if forloop.last %}
+                    {{ ability.ability.name |title }}
+                    {% else %}
+                    {{ ability.ability.name |title }},
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- card du pokemon 2 -->
+
+    <div class="card-teamId">
+        <div class="card-teamId--container background--type-{% with pokemon2.types|first as first_type %}{{ first_type.type.name }}{% endwith %}">
+            <div class="card-teamId__text name grid-section">
+                <span class="searchBox__{% if pokemon2.id != 0 %}close{% else %}add{% endif %}" style="margin: 0"
+                      onclick="opencloseUpdatePokemonBox({{ pokemon2.id }},{{ idteam }},{{ csrf_token }})"></span>
+                {{ pokemon2.name|title }}
+            </div>
+            <div class="card-teamId__type--container">
+                {% for type in pokemon2.types %}
+                <div class="card-teamId__text type card-teamId__type">
+                    {{ type.type.name }}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="card-teamId--img">
+                <img src="{{ pokemon2.sprites.front_default }}" alt="{{ pokemon2.name }}">
+            </div>
+        </div>
+        <div class="card-teamId__about">
+            <div class="subtitle">About</div>
+            <div class="text grid-section">
+                <div>
+                    Height
+                </div>
+                <div>
+                    {{ pokemon2.height }}0 cm
+                </div>
+            </div>
+            <div class="text grid-section   ">
+                <div>
+                    Weight
+                </div>
+                <div>
+                    {{ pokemon2.weight }} kg
+                </div>
+            </div>
+            <div class="text grid-section">
+                <div>
+                    Abilities
+                </div>
+                <div>
+                    {% for ability in pokemon2.abilities %}
+                    {% if forloop.last %}
+                    {{ ability.ability.name |title }}
+                    {% else %}
+                    {{ ability.ability.name |title }},
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- card du pokemon 3 -->
+
+    <div class="card-teamId">
+        <div class="card-teamId--container background--type-{% with pokemon3.types|first as first_type %}{{ first_type.type.name }}{% endwith %}">
+            <div class="card-teamId__text name grid-section">
+                <span class="searchBox__{% if pokemon3.id != 0 %}close{% else %}add{% endif %}" style="margin: 0"
+                      onclick="opencloseUpdatePokemonBox({{ pokemon3.id }},{{ idteam }},{{ csrf_token }})"></span>
+                {{ pokemon3.name|title }}
+            </div>
+            <div class="card-teamId__type--container">
+                {% for type in pokemon3.types %}
+                <div class="card-teamId__text type card-teamId__type">
+                    {{ type.type.name }}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="card-teamId--img">
+                <img src="{{ pokemon3.sprites.front_default }}" alt="{{ pokemon3.name }}">
+            </div>
+        </div>
+        <div class="card-teamId__about">
+            <div class="subtitle">About</div>
+            <div class="text grid-section">
+                <div>
+                    Height
+                </div>
+                <div>
+                    {{ pokemon3.height }}0 cm
+                </div>
+            </div>
+            <div class="text grid-section   ">
+                <div>
+                    Weight
+                </div>
+                <div>
+                    {{ pokemon3.weight }} kg
+                </div>
+            </div>
+            <div class="text grid-section">
+                <div>
+                    Abilities
+                </div>
+                <div>
+                    {% for ability in pokemon3.abilities %}
+                    {% if forloop.last %}
+                    {{ ability.ability.name |title }}
+                    {% else %}
+                    {{ ability.ability.name |title }},
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- card du pokemon 4 -->
+
+    <div class="card-teamId">
+        <div class="card-teamId--container background--type-{% with pokemon4.types|first as first_type %}{{ first_type.type.name }}{% endwith %}">
+            <div class="card-teamId__text name grid-section">
+                <span class="searchBox__{% if pokemon4.id != 0 %}close{% else %}add{% endif %}" style="margin: 0"
+                      onclick="opencloseUpdatePokemonBox({{ pokemon4.id }},{{ idteam }},{{ csrf_token }})"></span>
+                {{ pokemon4.name|title }}
+            </div>
+            <div class="card-teamId__type--container">
+                {% for type in pokemon4.types %}
+                <div class="card-teamId__text type card-teamId__type">
+                    {{ type.type.name }}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="card-teamId--img">
+                <img src="{{ pokemon4.sprites.front_default }}" alt="{{ pokemon4.name }}">
+            </div>
+        </div>
+        <div class="card-teamId__about">
+            <div class="subtitle">About</div>
+            <div class="text grid-section">
+                <div>
+                    Height
+                </div>
+                <div>
+                    {{ pokemon4.height }}0 cm
+                </div>
+            </div>
+            <div class="text grid-section   ">
+                <div>
+                    Weight
+                </div>
+                <div>
+                    {{ pokemon4.weight }} kg
+                </div>
+            </div>
+            <div class="text grid-section">
+                <div>
+                    Abilities
+                </div>
+                <div>
+                    {% for ability in pokemon4.abilities %}
+                    {% if forloop.last %}
+                    {{ ability.ability.name |title }}
+                    {% else %}
+                    {{ ability.ability.name |title }},
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- card du pokemon 5 -->
+
+    <div class="card-teamId">
+        <div class="card-teamId--container background--type-{% with pokemon5.types|first as first_type %}{{ first_type.type.name }}{% endwith %}">
+            <div class="card-teamId__text name grid-section">
+                <span class="searchBox__{% if pokemon5.id != 0 %}close{% else %}add{% endif %}" style="margin: 0"
+                      onclick="opencloseUpdatePokemonBox({{ pokemon5.id }},{{ idteam }},{{ csrf_token }})"></span>
+                {{ pokemon5.name|title }}
+            </div>
+            <div class="card-teamId__type--container">
+                {% for type in pokemon5.types %}
+                <div class="card-teamId__text type card-teamId__type">
+                    {{ type.type.name }}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="card-teamId--img">
+                <img src="{{ pokemon5.sprites.front_default }}" alt="{{ pokemon5.name }}">
+            </div>
+        </div>
+        <div class="card-teamId__about">
+            <div class="subtitle">About</div>
+            <div class="text grid-section">
+                <div>
+                    Height
+                </div>
+                <div>
+                    {{ pokemon5.height }}0 cm
+                </div>
+            </div>
+            <div class="text grid-section   ">
+                <div>
+                    Weight
+                </div>
+                <div>
+                    {{ pokemon5.weight }} kg
+                </div>
+            </div>
+            <div class="text grid-section">
+                <div>
+                    Abilities
+                </div>
+                <div>
+                    {% for ability in pokemon5.abilities %}
+                    {% if forloop.last %}
+                    {{ ability.ability.name |title }}
+                    {% else %}
+                    {{ ability.ability.name |title }},
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- box en position absolue pour rechercher les pokemons -->
+<div class="searchBox searchBox--hidden" id="searchBox">
+    <div class="searchBox__section">
+        <select class="searchBox__select" onchange="selectSearch()" id="searchBoxSelect">
+            <option disabled selected value>pokedex</option>
+            {% for pokemon in searchPokemon %}
+            <option value="{{ pokemon.id }}">{{ pokemon.name }}
+            </option>
+            {% endfor %}
+        </select>
+        <span class="searchBox__label">Pokemon :</span>
+    </div>
+    <span class="searchBox__close" onclick="opencloseSearchBox()"></span>
+</div>
+
+<!-- box en position absolue pour ajouter les pokemons -->
+<div class="searchBox searchBox--hidden" id="addPokemonBox">
+    <div class="searchBox__section">
+        <select class="searchBox__select" autocomplete="off" onchange="addPokemon({{ idteam }})"
+                id="addPokemonBoxSelect">
+            <option disabled selected>pokedex</option>
+            {% for pokemon in searchPokemon %}
+            <option value="{{ pokemon.id }}">{{ pokemon.name }}
+            </option>
+            {% endfor %}
+        </select>
+        <span class="searchBox__label">Add pokemon in team {{ name }} :</span>
+    </div>
+    <span class="searchBox__close" onclick="opencloseUpdatePokemonBox(0)"></span>
+</div>
+</body>
+</html>

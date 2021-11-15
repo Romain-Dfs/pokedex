@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POKEDEX</title>
+
+    <!-- chargement des fichier css et js -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dist/css/styles.css' %} ">
+    <script type="text/javascript" src="{% static 'dist/js/index.js' %}"></script>
+</head>
+<body>
+
+<!-- header -->
+<div class="header header-back">
+    <h1 class="title">Pokedex</h1>
+    <a href="/teams" class="header-back subtitle link">My teams</a>
+    <span></span>
+    <span class="search" onclick="opencloseSearchBox()"></span>
+</div>
+
+<!-- container pour afficher les pokemons-->
+<div class="grid__container">
+
+    <!-- boucle qui affiche les cards des pokemons -->
+    {% for element in results %}
+    <div class="card-home background--type-{% with element.types|first as first_type %}{{ first_type.type.name }}{% endwith %}"
+         onclick="location.href='/pokemon/{{ element.id }}'">
+        <div class="card-home__item card-home__text-container">
+            <div class="card-home__text name">
+                {{ element.name|title }}
+            </div>
+            <div class="card-home__type--container">
+                {% for type in element.types %}
+                <div class="card-home__text type card-home__type">
+                    {{ type.type.name|title }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="card-home__item">
+            <img src="{{ element.sprites.front_default }}"
+                 alt="{{ element.name }} picture">
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- box en position absolue pour rechercher les pokemons -->
+<div class="searchBox searchBox--hidden" id="searchBox">
+    <div class="searchBox__section">
+        <select class="searchBox__select" onchange="selectSearch()" id="searchBoxSelect">
+            <option disabled selected value>pokedex</option>
+            {% for pokemon in searchPokemon %}
+            <option value="{{ pokemon.id }}">{{ pokemon.name }}</option>
+            {% endfor %}
+        </select>
+        <span class="searchBox__label">Pokemon :</span>
+    </div>
+    <span class="searchBox__close" onclick="opencloseSearchBox()"></span>
+</div>
+</body>
+</html>

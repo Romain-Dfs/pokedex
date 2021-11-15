@@ -1,0 +1,108 @@
+@use "../utils/variables";
+
+.card-home {
+    flex-direction: row;
+
+    &__type--container {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.card-teams {
+    flex-direction: row;
+    background-color: variables.$secondColor;
+    padding: 2rem 1rem;
+    min-height: 245px;
+}
+
+.card-teamId {
+    flex-direction: column;
+    justify-content: normal;
+
+    &--img {
+        margin: -2rem 4rem -8rem 4rem;
+    }
+
+    &--container {
+        border-radius: 2rem 2rem 0 0;
+        background-image: url("../img/background_card.png ");
+        background-size: 100%;
+        background-position: 0rem 0rem;
+        background-repeat: no-repeat;
+        padding: 2rem 1rem;
+    }
+
+    &__type--container {
+        flex-direction: row;
+    }
+
+    &__about {
+        margin: 0.5rem;
+        position: relative;
+        z-index: 1;
+    }
+}
+
+.card-home,
+.card-teams {
+    background-image: url("../img/background_card.png ");
+    background-size: 100%;
+    background-position: 0rem 0rem;
+    background-repeat: no-repeat;
+    justify-content: space-around;
+
+
+    &__type--container {
+        flex-direction: column;
+    }
+}
+
+.card-home,
+.card-teams,
+.card-teamId {
+    display: flex;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
+    border-radius: 2rem;
+    transition: all .3s;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &__item {
+        flex: 1;
+    }
+
+    &__text-container {
+        display: flex;
+        flex-direction: column;
+        margin: 2rem 0 2rem 3.5rem;
+    }
+
+    &__text {
+        width: fit-content;
+        margin: 0.5rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    &__type {
+        background-color: variables.$white40;
+        border-radius: 1rem;
+        padding: 0.3rem 1rem;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.05);
+    }
+
+    &__type--container {
+        display: flex;
+    }
+
+    &__img {
+        position: absolute;
+        left: 0;
+        top: 30px;
+    }
+
+}

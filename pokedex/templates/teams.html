@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokedex Teams</title>
+
+    <!-- chargement des fichier css et js -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dist/css/styles.css' %} ">
+    <script type="text/javascript" src="{% static 'dist/js/index.js' %}"></script>
+
+</head>
+<body>
+
+<!-- header -->
+<div class="header header-back">
+    <a href="/" class="header-back"><span class="arrow-back"></span></a>
+    <h1 class="title"> Teams</h1>
+    <span class="search" onclick="opencloseSearchBox()"></span>
+</div>
+
+<!-- container des pokemons des teams -->
+<div class="grid__container">
+
+    <!-- car d'ajout d'une teams -->
+    <div class="card-teams" onclick="location.href='/teams/0'">
+        <span class="searchBox__add--teams searchBox__add"></span>
+    </div>
+
+    <!-- boucle pour ajouter toute les teams -->
+    {% for team in teams %}
+    <div class="card-teams" onclick="location.href='/teams/{{ team.id }}'">
+        <div class="card-teams__text name">
+            Name : {{ team.name|title }}
+            <img class="card-teams__img" src="{% static 'dist/img/pngegg.png' %}" alt="pngegg">
+        </div>
+        <div>
+            <div class="card-teams__text name">
+                Pokemon :
+            </div>
+
+            <!-- boucle pour afficher les pokemmons d'une team -->
+            {% for pokemon in searchPokemon %}
+            <div class="card-teams__text type">
+                {% if pokemon.id == team.pokemon1 %}{{ pokemon.name|title }}{% endif %}
+                {% if pokemon.id == team.pokemon2 %}{{ pokemon.name|title }}{% endif %}
+                {% if pokemon.id == team.pokemon3 %}{{ pokemon.name|title }}{% endif %}
+                {% if pokemon.id == team.pokemon4 %}{{ pokemon.name|title }}{% endif %}
+                {% if pokemon.id == team.pokemon5 %}{{ pokemon.name|title }}{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- box en position absolue pour rechercher les pokemons -->
+<div class="searchBox searchBox--hidden" id="searchBox">
+    <div class="searchBox__section">
+        <select class="searchBox__select" onchange="selectSearch()" id="searchBoxSelect">
+            <option disabled selected value>pokedex</option>
+            {% for pokemon in searchPokemon %}
+            <option value="{{ pokemon.id }}">{{ pokemon.name }}
+            </option>
+            {% endfor %}
+        </select>
+        <span class="searchBox__label">Pokemon :</span>
+    </div>
+    <span class="searchBox__close" onclick="opencloseSearchBox()"></span>
+</div>
+</body>
+</html>

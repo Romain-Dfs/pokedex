@@ -1,0 +1,26 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "scss": "sass -w --update srcWeb/scss:pokedex/myapp/static/dist/css",
+    "start":"run-p scss"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Romain-Dfs/pokedex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Romain-Dfs/pokedex/issues"
+  },
+  "homepage": "https://github.com/Romain-Dfs/pokedex#readme",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.43.4"
+  },
+  "dependencies": {},
+  "description": ""
+}
