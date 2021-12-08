@@ -27,7 +27,7 @@ git clone https://github.com/Romain-Dfs/pokedex.git
 ```
 
 Il vous faut lancer l'application par la suite
-plusieurs commande sont possible suivant comment votre python est installé
+plusieurs commande sont possible, suivant comment votre python est installé
 
 ```shell
 python3.8 pokedex/manage.py runserver
@@ -59,9 +59,9 @@ ___
 
 L'application a été développée avec python3.8, en utilisant le framework django.
 
-Les pages html utilise Gabarits afin d'utiliser les variables.
+Les pages html utilise Gabarits, afin d'utiliser les variables.
 
-Le CSS est généré avec SASS utilisé avec npm.
+Le CSS est généré avec SASS, utilisé avec npm.
 
 ### Environnement de travail :hammer:
 Pour travailler sur l'application, il faut deux shells.
