@@ -1,0 +1,25 @@
+@use "../utils/variables";
+
+.arrow {
+    &-back {
+        border: solid variables.$primaryColor;
+        border-width: 0 10px 10px 0;
+        display: inline-block;
+        padding: 18px;
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+
+        &:after {
+            content: "";
+            height: 10px;
+            width: 60px;
+            background-color: variables.$primaryColor;
+            display: block;
+            transform: rotate(-135deg);
+            -webkit-transform: rotate(-135deg);
+            position: absolute;
+            top: 15px;
+            left: -10px;
+        }
+    }
+}

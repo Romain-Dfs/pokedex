@@ -1,0 +1,38 @@
+@use '../utils/variables';
+
+.search {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs, 1));
+    width: 60px;
+    height: 60px;
+    border: 6px solid;
+    border-radius: 100%;
+    margin-left: -4px;
+    margin-top: -4px;
+    cursor: pointer;
+    color: variables.$primaryColor;
+
+    &::after {
+        content: "";
+        display: block;
+        box-sizing: border-box;
+        position: absolute;
+        border-radius: 3px;
+        width: 6px;
+        height: 30px;
+        background: variables.$primaryColor;
+        transform: rotate(-45deg);
+        top: 40px;
+        left: 50px;
+        cursor: pointer;
+    }
+
+    &-home {
+        position: absolute;
+        top: 3rem;
+        right: 6rem;
+    }
+
+}

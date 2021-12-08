@@ -1,0 +1,99 @@
+@use '../utils/variables';
+@use '../utils/mixins';
+
+.searchBox {
+    position: absolute;
+    left: 43%;
+    top: 13%;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+    transition: opacity .3s, transform .4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+
+    &__section {
+        position: relative;
+        text-transform: uppercase;
+    }
+
+    &__select {
+        padding: 1.7rem 5.5rem 0.3rem 0.5rem;
+        font-size: 1.2rem;
+        background: transparent;
+        border: 2px solid transparent;
+        z-index: 0;
+    }
+
+    &__label {
+        top: 6px;
+        left: 7px;
+        position: absolute;
+        cursor: default;
+        @include mixins.font('Roboto', 500, 0.8rem, 100%);
+        color: variables.$primaryColor;
+    }
+
+    &--show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    &--hidden {
+        opacity: 0;
+        transform: translateY(-5vh);
+    }
+
+    &__close,
+    &__add{
+        margin: 1rem;
+        box-sizing: border-box;
+        position: relative;
+        display: block;
+        transform: scale(var(--ggs, 1));
+        width: 40px;
+        height: 40px;
+        border: 4px solid;
+        border-radius: 6px;
+        cursor: pointer;
+
+        &::after,
+        &::before {
+            content: "";
+            display: block;
+            box-sizing: border-box;
+            position: absolute;
+            width: 26px;
+            height: 4px;
+            background: currentColor;
+            border-radius: 5px;
+            top: 15px;
+            left: 3px;
+            cursor: pointer;
+        }
+    }
+
+    &__close{
+        &::before{
+            transform: rotate(45deg);
+        }
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+
+    &__add{
+        &::before{
+            transform: rotate(0);
+        }
+        &::after {
+            transform: rotate(-90deg);
+        }
+        &--teams{
+            transform: scale(3);
+            color: variables.$primaryColorLight;
+            align-self: center;
+        }
+    }
+}

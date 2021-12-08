@@ -1,0 +1,26 @@
+.grid {
+
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        @media screen and (min-width: 1450px) {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        @media screen and (min-width: 1120px) and (max-width: 1500px) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        @media screen and (min-width: 760px) and (max-width: 1120px) {
+            grid-template-columns: 1fr 1fr;
+        }
+        @media screen and (max-width: 760px) {
+            grid-template-columns: 1fr;
+        }
+        margin: 3rem;
+        grid-gap: 4rem 3rem;
+    }
+
+    &-section{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}

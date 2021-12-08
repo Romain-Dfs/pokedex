@@ -1,0 +1,78 @@
+@use "variables";
+@use "mixins";
+
+.title {
+    color: variables.$primaryColor;
+    @include mixins.font('Roboto', 900, 4rem, 120%);
+
+    @media screen and (min-width: 1450px) {
+        @include mixins.font('Roboto', 500, 4rem, 120%);
+    }
+    @media screen and (min-width: 1120px) and (max-width: 1500px) {
+        @include mixins.font('Roboto', 500, 3.5rem, 120%);
+    }
+    @media screen and (min-width: 760px) and (max-width: 1120px) {
+        @include mixins.font('Roboto', 500, 3rem, 120%);
+    }
+    @media screen and (max-width: 760px) {
+        @include mixins.font('Roboto', 500, 2.5rem, 120%);
+    }
+
+    &__home {
+        margin: 3rem;
+    }
+}
+
+.subtitle {
+    color: variables.$primaryColor;
+    text-decoration: none;
+    @include mixins.font('Roboto', 700, 2rem, 120%);
+    margin: 1rem 0;
+}
+
+.text {
+    color: variables.$primaryColor;
+    @include mixins.font('Roboto', 500, 1rem, 120%);
+    margin: 0.7rem 0;
+
+    &-up {
+        @include mixins.font('Roboto', 700, 1.2rem, 120%);
+        margin: 0.6rem 0;
+    }
+}
+
+.name {
+    @include mixins.font('Roboto', 700, 1.5rem, 120%);
+    color: variables.$primaryColorLight;
+    text-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
+}
+
+.type {
+    @include mixins.font('Roboto', 500, 1rem, 120%);
+    color: variables.$primaryColorLight;
+    text-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+
+    &--pokemon-presenter {
+        @include mixins.font('Roboto', 500, 1.7rem, 120%);
+        margin: 1rem;
+
+        @media screen and (min-width: 1450px) {
+            @include mixins.font('Roboto', 500, 1.7rem, 120%);
+        }
+        @media screen and (min-width: 1120px) and (max-width: 1500px) {
+            @include mixins.font('Roboto', 500, 1.5rem, 120%);
+        }
+        @media screen and (min-width: 760px) and (max-width: 1120px) {
+            @include mixins.font('Roboto', 500, 1.2rem, 120%);
+        }
+        @media screen and (max-width: 760px) {
+            @include mixins.font('Roboto', 500, 1rem, 120%);
+        }
+    }
+}
+
+.link{
+    &:hover{
+        color: variables.$secondColor;
+    }
+}

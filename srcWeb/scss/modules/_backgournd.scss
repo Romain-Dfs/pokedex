@@ -1,0 +1,65 @@
+@use "../utils/variables";
+.background{
+    &--type-grass {
+        background-color: variables.$grass
+    }
+
+    &--type-fire {
+        background-color: variables.$fire;
+    }
+
+    &--type-water {
+        background-color: variables.$water;
+    }
+
+    &--type-normal {
+        background-color: variables.$normal;
+    }
+
+    &--type-bug {
+        background-color: variables.$bug;
+    }
+
+    &--type-poison {
+        background-color: variables.$poison;
+    }
+
+    &--type-electric {
+        background-color: variables.$electric;
+    }
+
+    &--type-ground {
+        background-color: variables.$ground;
+    }
+
+    &--type-fairy {
+        background-color: variables.$fairy;
+    }
+
+    &--type-fighting {
+        background-color: variables.$fighting;
+    }
+
+    &--type-psychic {
+        background-color: variables.$psychic;
+    }
+
+    &--type-rock {
+        background-color: variables.$rock;
+    }
+
+    &--type-ghost {
+        background-color: variables.$ghost;
+    }
+
+    &--type-ice {
+        background-color: variables.$ice;
+    }
+
+    &--type-dragon {
+        background-color: variables.$dragon;
+    }
+    &--type-unknown {
+        background-color: variables.$unknown;
+    }
+}
